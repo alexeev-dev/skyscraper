@@ -1,4 +1,4 @@
-import testButton from './utils/button'
+import {testButton} from './utils/button'
 
 function getClientPos(e) {
   const {pageX, pageY} = e.touches ? e.touches[0] : e

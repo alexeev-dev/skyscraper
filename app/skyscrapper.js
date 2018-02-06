@@ -1,3 +1,4 @@
+import GameplayScreen from './screens/gameplay'
 import MainScreen from './screens/main'
 import {nextFrame} from './actions'
 import renderFrame from './render'
@@ -79,6 +80,7 @@ class Skyscrapper extends Game {
 
   handleStart() {
     this.input.switchContext('main-screen')
+    this.run()
   }
 
   handleGameover() {

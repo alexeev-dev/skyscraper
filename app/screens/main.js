@@ -37,6 +37,7 @@ class MainScreen extends Screen {
   }
 
   handlePlay() {
+    console.log('clicked')
     this.dispatch(startGameplay())
     this.dispatch(enterScreen(SCREEN_GAMEPLAY))
     this.input.switchContext('gameplay-screen')

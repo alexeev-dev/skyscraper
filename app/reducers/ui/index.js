@@ -4,7 +4,15 @@ import updateCommon from './common'
 import updateGameplay from './gameplay'
 import updateSound from './sound'
 import updateResult from './result'
-import * from '../../actions'
+import {
+  LOAD_SCORE,
+  SAVE_SCORE,
+  NEXT_FRAME,
+  SHOW_RESULT,
+  ENTER_SCREEN,
+  TOGGLE_PAUSE,
+  START_GAMEPLAY
+} from '../../actions'
 
 export const uiInitial = {
   screen: SCREEN_MAIN,

@@ -1,6 +1,14 @@
-import {gameplayNext, gameplayInitial}, gameplayReducer from './gameplay'
-import {uiNext, uiInitial}, uiReducer from './ui'
-import * from '../actions'
+import gameplayReducer, {gameplayNext, gameplayInitial} from './gameplay'
+import uiReducer, {uiNext, uiInitial} from './ui'
+import {
+  LOAD_SCORE,
+  SAVE_SCORE,
+  NEXT_FRAME,
+  SHOW_RESULT,
+  ENTER_SCREEN,
+  TOGGLE_PAUSE,
+  START_GAMEPLAY
+} from '../actions'
 
 const initialState = {
   gameplay: gameplayInitial,
