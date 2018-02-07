@@ -49,7 +49,12 @@ const resources = [
   'images/ui/result-bg.png',
   'images/intro/fb-logo.png',
   'images/intro/challenge.png',
-  'images/intro/challenge-down.png'
+  'images/intro/challenge-down.png',
+  'images/common/box.png',
+  'images/common/star.png',
+  'images/common/trail.png',
+  'images/common/warning.png',
+  'images/skins/skin-1.png'
 ]
 
 const gameIsOver = ({ui, gameplay}) => !ui.result.isOpen && gameplay.isGameOver
