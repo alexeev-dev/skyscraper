@@ -33,7 +33,6 @@ function updateStar(star, player, frame) {
 function updateStars(player, ground, {frame, stage}) {
   const {stars} = stage
   let picked = 0
-  console.log(stars)
   return [stars.filter(star => isAlive(star, ground, frame))
     .map(star => {
       const updated = updateStar(star, player, frame)

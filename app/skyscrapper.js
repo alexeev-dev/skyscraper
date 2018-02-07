@@ -1,6 +1,7 @@
+import {nextFrame, showResult, saveScore} from './actions'
 import GameplayScreen from './screens/gameplay'
+import ResultScreen from './screens/result'
 import MainScreen from './screens/main'
-import {nextFrame} from './actions'
 import renderFrame from './render'
 import Game from './game'
 
@@ -30,9 +31,12 @@ const resources = [
   'images/intro/add-person-down.png',
   'images/intro/add-place.png',
   'images/intro/add-place-down.png',
+  'images/ui/close.png',
   'images/ui/header.png',
   'images/ui/header-box.png',
   'images/ui/header-star.png',
+  'images/ui/pause.png',
+  'images/ui/pause-down.png',
   'images/ui/question.png',
   'images/ui/question-down.png',
   'images/ui/sound.png',
@@ -42,21 +46,26 @@ const resources = [
   'images/ui/sound-on.png',
   'images/ui/music-off.png',
   'images/ui/music-on.png',
+  'images/ui/result-bg.png',
   'images/intro/fb-logo.png',
   'images/intro/challenge.png',
   'images/intro/challenge-down.png'
 ]
+
+const gameIsOver = ({ui, gameplay}) => !ui.result.isOpen && gameplay.isGameOver
 
 class Skyscrapper extends Game {
   constructor(store) {
     super(store)
     this.screens = {
       'main-screen': new MainScreen(store, this.trigger, this.input),
+      'result-screen': new ResultScreen(store, this.trigger, this.input),
       'gameplay-screen': new GameplayScreen(store, this.trigger, this.input)
     }
     this.events = {
       'start': [this.handleStart.bind(this)],
-      'progress': [this.handleProgress.bind(this)]
+      'progress': [this.handleProgress.bind(this)],
+      'gameover': [this.handleGameover.bind(this)]
     }
     this.handleProgress = this.handleProgress.bind(this)
   }
@@ -71,6 +80,9 @@ class Skyscrapper extends Game {
   loop(delta) {
     const {store, input, images} = this
     store.dispatch(nextFrame(delta, input.getState()))
+    if (gameIsOver(store.getState())) {
+      this.trigger('gameover')
+    }
     renderFrame(store.getState(), images)
   }
 
@@ -84,6 +96,10 @@ class Skyscrapper extends Game {
   }
 
   handleGameover() {
+    const {dispatch} = this.store
+    dispatch(saveScore())
+    dispatch(showResult())
+    this.input.switchContext('result-screen')
     console.log('Game over!')
   }
 

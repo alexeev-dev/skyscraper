@@ -12,6 +12,7 @@ class GameplayScreen extends Screen {
   }
 
   handlePause() {
+    console.log('paused!')
     this.dispatch(togglePause())
   }
 }
