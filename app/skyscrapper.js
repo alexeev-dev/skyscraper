@@ -10,6 +10,7 @@ const resources = [
   'images/places/summer-ground.png',
   'images/intro/shadow.png',
   'images/intro/logo.png',
+  'images/intro/play.png',
   'images/intro/person-button.png',
   'images/intro/person-button-down.png',
   'images/intro/place-button.png',

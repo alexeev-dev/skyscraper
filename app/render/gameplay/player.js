@@ -17,8 +17,8 @@ function spriteScale(frame, deathFrame, direction) {
   if (deathFrame === -1) {
     return [scaleX, 1]
   } else {
-    if (frame - deathFrame < 30) {
-      return [scaleX, 1 - (frame - deathFrame) / 30]
+    if (frame - deathFrame < 10) {
+      return [scaleX, 1 - (frame - deathFrame) / 10]
     } else {
       return [scaleX, 0]
     }
